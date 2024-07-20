@@ -3,6 +3,7 @@ import Benefits from "./cmps/Benefits";
 import Collaboration from "./cmps/Collaboration";
 import Header from "./cmps/Header";
 import Hero from "./cmps/Hero";
+import Pricing from "./cmps/Pricing";
 import Services from "./cmps/Services";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Benefits />
         <Collaboration />
         <Services />
+        <Pricing />
       </div>
       <ButtonGradient />
     </>
