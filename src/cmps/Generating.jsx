@@ -8,9 +8,9 @@ const Generating = ({ className }) => {
       } text-base`}
     >
       <img
-        className="w-5 h-5 mr-4"
         src={loading}
         alt="loading"
+        className="w-5 h-5 mr-4 animate-spin pointer-events-none select-none"
       />
       AI is generating
     </div>
