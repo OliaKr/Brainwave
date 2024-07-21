@@ -1,6 +1,7 @@
 import ButtonGradient from "./assets/svg/ButtonGradient";
 import Benefits from "./cmps/Benefits";
 import Collaboration from "./cmps/Collaboration";
+import Footer from "./cmps/Footer";
 import Header from "./cmps/Header";
 import Hero from "./cmps/Hero";
 import Pricing from "./cmps/Pricing";
@@ -18,6 +19,7 @@ const App = () => {
         <Services />
         <Pricing />
         <Roadmap />
+        <Footer />
       </div>
       <ButtonGradient />
     </>
