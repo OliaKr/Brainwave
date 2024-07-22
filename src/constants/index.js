@@ -59,15 +59,10 @@ export const navigation = [
   },
   {
     id: "4",
-    title: "New account",
-    url: "#signup",
-    onlyMobile: true,
-  },
-  {
-    id: "5",
-    title: "Sign in",
+    title: "Source Code",
     url: "https://github.com/OliaKr/Brainwave",
     onlyMobile: true,
+    external: true,
   },
 ];
 

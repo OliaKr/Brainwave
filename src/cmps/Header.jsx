@@ -63,6 +63,8 @@ const Header = () => {
                 key={item.id}
                 href={item.url}
                 onClick={handleClick}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors
                   hover:text-color-1 ${
                     item.onlyMobile ? "lg:hidden" : ""
@@ -78,19 +80,20 @@ const Header = () => {
               </a>
             ))}
           </div>
-          <HamburgerMenu />
+          <HamburgerMenu className="lg:hidden" />
         </nav>
 
         <Button
           className="hidden lg:flex"
           href="https://github.com/OliaKr/Brainwave"
+          external
           target="_blank"
           rel="noopener noreferrer"
         >
           Source Code
         </Button>
         <Button
-          className="ml-auto lg:hiiden"
+          className="ml-auto lg:hidden"
           px="px-3"
           onClick={toggleNavigation}
         >
