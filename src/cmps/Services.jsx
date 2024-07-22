@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Section from "./Section";
 import Heading from "./Heading";
 import { service1, service2, service3, check } from "../assets";
@@ -10,6 +11,7 @@ import {
   VideoChatMessage,
 } from "./design/Services";
 const Services = () => {
+  const [isPlaying, setIsPlaying] = useState(true);
   return (
     <Section id="how-to-use">
       <div className="container">
@@ -137,8 +139,11 @@ const Services = () => {
                   height={400}
                   alt="Scary robot"
                 />
-                <VideoChatMessage />
-                <VideoBar />
+                <VideoChatMessage isPlaying={isPlaying} />
+                <VideoBar
+                  isPlaying={isPlaying}
+                  setIsPlaying={setIsPlaying}
+                />
               </div>
             </div>
           </div>

@@ -1,4 +1,6 @@
-import { brainwaveWhiteSymbol, gradient, play } from "../../assets";
+import { useEffect, useRef, useState } from "react";
+import Typewriter from "typewriter-effect";
+import { brainwaveWhiteSymbol, gradient, play, pause } from "../../assets";
 import ChatBubbleWing from "../../assets/svg/ChatBubbleWing";
 
 export const Gradient = () => {
@@ -18,16 +20,36 @@ export const Gradient = () => {
 export const PhotoChatMessage = () => {
   return (
     <div className="absolute top-8 right-8 max-w-[17.5rem] py-6 px-8 bg-black rounded-t-xl rounded-bl-xl font-code text-base lg:top-16 lg:right-[8.75rem] lg:max-w-[17.5rem]">
-      Hey Brainwave, enhance this photo
+      <Typewriter
+        options={{
+          strings: [
+            "Hey Brainwave, enhance this photo.",
+            "Hey Brainwave, give this photo a boost.",
+            "Brainwave, enhance the details in this photo.",
+            "Activate Brainwave mode to refine this photo.",
+            "Brainwave, apply your magic to this photo.",
+          ],
+          autoStart: true,
+          loop: true,
+        }}
+      />
       <ChatBubbleWing className="absolute left-full bottom-0" />
     </div>
   );
 };
 
-export const VideoChatMessage = () => {
+export const VideoChatMessage = ({ isPlaying }) => {
   return (
     <div className="absolute top-8 left-[3.125rem] w-full max-w-[14rem] pt-2.5 pr-2.5 pb-7 pl-5 bg-n-6 rounded-t-xl rounded-br-xl font-code text-base md:max-w-[17.5rem]">
-      Video generated!
+      <Typewriter
+        options={{
+          strings: isPlaying ? ["Video generating..."] : ["Video generated!"],
+          cursor: isPlaying ? "|" : "",
+          autoStart: true,
+          deleteSpeed: isPlaying ? "natural" : Infinity,
+          loop: isPlaying,
+        }}
+      />
       <div className="absolute left-5 -bottom-[1.125rem] flex items-center justify-center w-[2.25rem] h-[2.25rem] bg-color-1 rounded-[0.75rem]">
         <img
           src={brainwaveWhiteSymbol}
@@ -47,19 +69,38 @@ export const VideoChatMessage = () => {
   );
 };
 
-export const VideoBar = () => {
+export const VideoBar = ({ isPlaying, setIsPlaying }) => {
+  const [counter, setCounter] = useState(0);
+  const progressRef = useRef(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (counter >= 100) setCounter(0);
+      if (!isPlaying) return clearInterval(interval);
+
+      progressRef.current.style.width = `${counter}%`;
+      setCounter((oldCounter) => oldCounter + 0.5);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [counter, isPlaying]);
+
   return (
     <div className="absolute left-0 bottom-0 w-full flex items-center p-6">
       <img
-        src={play}
+        src={isPlaying ? pause : play}
         width={24}
         height={24}
         alt="Play"
-        className="object-contain mr-3"
+        className="object-contain mr-3 cursor-pointer"
+        onClick={() => setIsPlaying(!isPlaying)}
       />
 
       <div className="flex-1 bg-[#D9D9D9]">
-        <div className="w-1/2 h-0.5 bg-color-1"></div>
+        <div
+          ref={progressRef}
+          className="h-0.5 bg-color-1 transition-all"
+        />
       </div>
     </div>
   );
