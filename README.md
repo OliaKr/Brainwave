@@ -4,7 +4,7 @@ Developed using Vite React.js, Tailwind CSS and Typewriter effect library for in
 
 Hosting - AWS Amplify Hosting.
 
-Deployed app -
+Deployed app - https://main.d3f7nseedr4ova.amplifyapp.com/
 
 ![alt text](https://github.com/OliaKr/Brainwave/blob/main/src/assets/screen.JPG)
 ![alt text](https://github.com/OliaKr/Brainwave/blob/main/src/assets/screen1.JPG)
